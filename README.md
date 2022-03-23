@@ -1,19 +1,8 @@
 # wa-001-get_commits
 
-## Project setup
-```
-npm install
-```
+Prva vježba iz kolegija Web aplikacije.
+Vue.js aplikacija koja prikazuje commitove vuesjs repozitorija.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+## Podaci o studentu
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+Sandi Blekić, 0303075866
