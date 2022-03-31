@@ -60,23 +60,26 @@ export default {
       store,
     };
   },
-  async mounted() {
+  mounted() {
     let numberOfCommits = 10;
-    this.transformData(numberOfCommits);
+    this.transformData(numberOfCommits, this.store.limiter);
   },
   methods: {
-    async transformData(numberOfCommits) {
-      let data = await this.getData(numberOfCommits);
-      for (let d of data) {
-        let temp = {
-          sha: d.sha,
-          name: d.commit.author.name,
-          email: d.commit.author.email,
-          message: d.commit.message,
-          date: new Date(d.commit.author.date).toDateString(),
-        };
-        this.store.commits.push(temp);
-      }
+    async transformData(numberOfCommits, limiter) {
+      if (limiter) {
+        let data = await this.getData(numberOfCommits);
+        for (let d of data) {
+          let temp = {
+            sha: d.sha,
+            name: d.commit.author.name,
+            email: d.commit.author.email,
+            message: d.commit.message,
+            date: new Date(d.commit.author.date).toDateString(),
+          };
+          this.store.commits.push(temp);
+        }
+        this.store.limiter = 0;
+      } else return;
     },
     async getData(numberOfCommits) {
       let resp = await Service.getGlobal(numberOfCommits);
