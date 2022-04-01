@@ -1,30 +1,28 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
-import CommitDetails from '../views/CommitDetails.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import HomeView from "../views/HomeView.vue";
+import CommitDetails from "@/views/CommitDetails";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "/",
+    name: "home",
+    component: HomeView,
   },
-
   {
-    path: '/commit_details/:sha',
-    name: 'commit_details',
+    path: "/commmit-details/:sha",
+    name: "commit-details",
     component: CommitDetails,
-    props: true
-  }
-
-]
+    props: true,
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;
